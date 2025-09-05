@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: royscompany-tracker
+    env: php
+    region: oregon
+    plan: free
+    buildCommand: ""
+    startCommand: ""
+    envVars:
+      - key: DISCORD_WEBHOOK_URL
+        sync: false
+    staticPublishPath: ./public
+    routes:
+      - type: rewrite
+        source: /logger.php
+        destination: /logger.php
+      - type: rewrite  
+        source: /*
+        destination: /index.html
